@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Tema da aplicação sem ActionBar e em tela cheia -->
+    <style name="Navinha">
+        <!-- Ocultar a barra de status -->
+        <item name="android:windowFullscreen">true</item>
+        <!-- Ocultar a barra de navegação -->
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+</resources>

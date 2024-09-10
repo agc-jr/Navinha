@@ -1,0 +1,337 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h3{
+    color: red;
+    text-align: center;
+    font-size: x-large;
+    font-family: Verdana;
+}
+
+body{
+    background: black;
+}
+
+
+/* Tela de Joogo */
+.game-board{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /*border: 5px inset blue;*/
+    margin: 0% 0%;    
+    overflow: hidden;
+}
+
+.foguete{
+    position: absolute;
+    width: 150px;
+    bottom: 0;
+    /*animation: desvio-animacao 500ms;/**/
+}
+
+.asteroid{
+    position: absolute;
+    bottom: 0;
+    width: 80px; 
+    right: -10%;
+    /*animation: asteroid-animacao 2s infinite linear;   */
+}
+
+@keyframes asteroid-animacao{
+    from{
+        right: -10px;
+    }
+
+    to{
+        right: 100%;
+    }
+}
+
+.asteroidAnimacao{    
+    animation: asteroid-animacao 2s infinite linear;
+}
+
+.desvio{
+    animation: desvio-animacao 1s;
+}
+
+@keyframes desvio-animacao {
+    0%{
+        bottom: 0px;
+    }
+
+    40%{
+        bottom: 200px;
+    }
+
+    50%{
+        bottom: 200px;
+        /*transform: rotate(45deg) translateX(180px);/**/
+    }
+
+    70%{
+        bottom: 200px;
+    }
+
+    80%{
+        bottom: 200px;
+    }
+
+    100%{
+        bottom: 0px;
+        /*transform: rotate(-45deg) translateX(-180px);/**/
+    }
+    
+}
+
+.fundo{
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    animation: fundo-animacao 5s infinite alternate linear;
+}
+
+
+@keyframes fundo-animacao {
+    0%{
+        bottom: 0px;
+        left: 0px;
+    }
+
+    40%{
+        bottom: -70px;
+        left: -70px;
+    }
+
+    50%{
+        bottom: -150px;
+        left: -150px;
+        /*transform: rotate(45deg) translateX(180px);*/
+    }
+
+    60%{
+        bottom: -150px;
+        left: -150px;
+    }
+
+    70%{
+        bottom: -75px;
+        left: -75px;
+    }
+
+    80%{
+        bottom: -50px;
+        left: -50px;
+    }
+
+    100%{
+        bottom: 0px;
+        left: 0px;
+        /*transform: rotate(-45deg) translateX(-180px);*/
+    }
+}
+
+/* Barra Superior */
+.barra-superior{
+    position: absolute;
+    top: 0px;
+    height: 80px;
+    width: 90%;
+    border: 2px solid white;
+    border-radius: 15px;
+    margin: 5px;
+    padding: 5px;
+    left: 4%;
+    background-color: white;
+    opacity: 80%;
+}
+
+.vidas-img{
+    position: absolute;    
+    height: 15px;
+    left: 15px;
+}
+
+.vidas{
+    position: absolute;
+    height: 30px;
+    left: 60px;
+    font-size: 12px;
+}
+
+.vidas-valor{
+    font-weight: bold;
+    color: red;
+    font-size: 14px;
+}
+
+.pontos-img{
+    position: absolute;
+    height: 15px;
+    left: 130px;;
+}
+
+
+.pontos{
+    position: absolute;
+    height: 30px;    
+    left: 150px;
+    font-size: 12px;
+}
+
+.pontos-valor{
+    font-weight: bold;
+    color: red;
+    font-size: 14px;
+}
+
+.hiscore-img{
+    position: absolute;
+    height: 80px;    
+    right: 30px;
+    margin: -55px 0px;
+}
+
+.hiscore{
+    position: absolute;
+    height: 30px;    
+    font-size: 12px;
+    right: 40px;
+    margin: -10px 0px;
+}
+
+.hiscore-valor{
+    font-weight: bold;
+    color: yellow;
+    font-size: 18px;
+}
+
+
+
+/* TELA Restart*/
+/*
+.telaRestart{
+    position: absolute;
+    width: 50%;
+    height: 100px;
+    right: 25%;
+    border: 5px solid blue;
+    bottom: 35%;
+    background-color: yellow;
+    border-radius: 15px;
+    color: red;
+    text-align: center;
+    padding: 30px 0px;
+    
+    font-family: Arial;
+    opacity: 75%;
+    visibility: hidden;
+}*/
+
+.telaRestart{
+    position: absolute;
+    /*width: 50%;*/
+    height: 100px;
+    right: 25%;
+    bottom: 35%;
+    background-color: dimgrey;
+    border: 5px solid blue;
+    border-radius: 15px;
+    color: white;
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 1.5rem;
+    font-family: Arial;
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    opacity: 0.75;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+}
+
+/* TELA GameOver*/
+
+.fundoTelaFim{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    color: black;
+    background-color: black;
+    opacity: 75%;
+    z-index: 0;
+    visibility: hidden;
+}
+
+.telaFim {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 400px;
+    width: 400px;
+    background-image: url(../img/quadradoFinal.png);
+    background-size: cover;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+    visibility: hidden;
+  }
+  
+  .score-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    color: #fff;
+  }
+  
+  .pontuacaoFinalValor {
+    font-size: 3em;
+    font-weight: bold;
+    margin: 10px 0;
+  }
+  
+  .hiscoreValorFinal {
+    font-size: 2em;
+    font-weight: bold;
+    margin: 10px 0;
+  }
+  
+  .btnReiniciarJogo {
+    width: 85px;
+    height: 85px;
+    margin-top: 5px;
+    cursor: pointer;
+  }
+  
+  .txtGameOver {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #fff;
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

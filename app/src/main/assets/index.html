@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="./css/style.css">        
+        <script src="./js/script.js" defer></script>
+
+        <link rel="shortcut icon" href="./img/favicon.ico" />
+
+        <title>Navinha</title>
+    </head>
+
+    <body>        
+        <div class="game-board">
+            <img src="./img/background1.png" class="fundo" />            
+            <div class="barra-superior">
+                <h3>NAVINHA</h3>
+                <br />
+                <img src="./img/foguete.png" class="vidas-img" />
+                <div class="vidas">VIDAS:<span class="vidas-valor">3</span></div>
+                <img src="./img/asteroid.png" class="pontos-img" />
+                <div class="pontos">PONTOS:<span class="pontos-valor">0</span></div> 
+                <img src="./img/hi_score.png" class="hiscore-img" />
+                <div class="hiscore"><span class="hiscore-valor">0</span></div>                
+            </div>
+            <img src="./img/foguete.png" class="foguete" />
+            <img src="./img/asteroid.png" class="asteroid asteroidAnimacao" />            
+        </div>
+        <div class="telaRestart">CLIQUE AQUI PARA CONTINUAR</div>
+        <div class="fundoTelaFim"></div>
+        <div class="telaFim">
+            <div class="score-container">
+                <div class="txtGameOver">GAME OVER!</div>                                                
+                SUA PONTUACAO:
+                <span class="pontuacaoFinalValor">0</span>
+                MAIOR PONTUACAO:
+                <span class="hiscoreValorFinal">0</span>                
+                <img src="./img/restart.png" class="btnReiniciarJogo" />
+            </div>                       
+        </div>
+    </body>
+
+</html>
