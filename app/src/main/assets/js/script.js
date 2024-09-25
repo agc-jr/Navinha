@@ -18,7 +18,7 @@ if(typeof Android !== 'undefined'){
     setTimeout(function() {
         var hiscore = Android.getHighestPontuacao();  // Chamar o método Android
         document.querySelector('.hiscoreValorFinal').textContent = hiscore;
-        hiscoreSuperior.textContent = hiscore;
+        hiscoreSuperior.textContent = hiscore; 
     }, 100);  // Aguardar 100ms para garantir que a interface esteja pronta
 }else{
     cukinho = document.cookie.split("; ").find((row) => row.startsWith("hiscore="))?.split("=")[1];
@@ -110,3 +110,26 @@ restartTela.addEventListener('click', restartGame);
 restartTela.addEventListener('touchstart', restartGame);
 btnRestartFinalGame.addEventListener('click', restartFinalGame);
 btnRestartFinalGame.addEventListener('touchstart', restartFinalGame);
+
+//controle de som 
+const musicaDeFundo = document.getElementById('backgroundMusic');
+const btnMute = document.querySelector('.mute-img');
+const btnUnMute = document.querySelector('.unmute-img');
+
+const playBackgroundSong = () => {
+    musicaDeFundo.play();
+    btnUnMute.style.visibility = "hidden";
+    btnMute.style.visibility = "visible";
+}
+
+const stopBackgroundSong = () => {
+    musicaDeFundo.pause();
+    btnUnMute.style.visibility = "visible";
+    btnMute.style.visibility = "hidden";
+}
+
+btnUnMute.addEventListener('click', playBackgroundSong);
+btnUnMute.addEventListener('touchstart', playBackgroundSong);
+
+btnMute.addEventListener('click', stopBackgroundSong);
+btnMute.addEventListener('touchstart', stopBackgroundSong);

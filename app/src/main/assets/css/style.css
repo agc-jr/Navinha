@@ -321,7 +321,20 @@ body{
   }
   
 
-
+  .mute-img {
+    position: absolute;
+    height: 30px;
+    top: 5px;
+    left: 15px;
+    visibility: hidden;
+    }
+ .unmute-img {
+    position: absolute;
+    height: 30px;
+    top: 5px;
+    left: 15px;    
+    visibility: visible;
+    }
 
 
 

@@ -12,12 +12,18 @@
         <title>Navinha</title>
     </head>
 
-    <body>        
+    <body>
+        <!-- O elemento de áudio com suporte para .ogg e .mp3 -->
+        <audio id="backgroundMusic" loop>
+            <source src="./sound/background.mp3" type="audio/mp3">            
+        </audio>        
         <div class="game-board">
             <img src="./img/background1.png" class="fundo" />            
             <div class="barra-superior">
                 <h3>NAVINHA</h3>
                 <br />
+                <img src="./img/mute.png" class="mute-img" />
+                <img src="./img/unmute.png" class="unmute-img" />
                 <img src="./img/foguete.png" class="vidas-img" />
                 <div class="vidas">VIDAS:<span class="vidas-valor">3</span></div>
                 <img src="./img/asteroid.png" class="pontos-img" />
