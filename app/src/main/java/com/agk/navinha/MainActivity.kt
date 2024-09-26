@@ -13,6 +13,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import android.view.View
 import android.webkit.JavascriptInterface
 import android.webkit.WebSettings
+import android.media.MediaPlayer
 
 
 import android.webkit.WebView
@@ -21,6 +22,11 @@ import com.agk.navinha.ui.theme.NavinhaTheme
 import com.agk.navinha.PontuacaoDbHelper
 
 class MainActivity : ComponentActivity() {
+
+    private lateinit var mediaPlayer: MediaPlayer
+    private lateinit var mediaPlayer2: MediaPlayer
+    private lateinit var webView: WebView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -59,10 +65,34 @@ class MainActivity : ComponentActivity() {
                 val dbHelper = PontuacaoDbHelper(this@MainActivity)
                 return dbHelper.getHighestPontuacao()
             }
+
+            @JavascriptInterface
+            fun playExplosion() {
+                mediaPlayer = MediaPlayer.create(this@MainActivity, R.raw.explosion2)
+                mediaPlayer.start()
+            }
+
+            @JavascriptInterface
+            fun playMoving() {
+                mediaPlayer2 = MediaPlayer.create(this@MainActivity, R.raw.moving2)
+                mediaPlayer2.start()
+            }
         }, "Android")
         WebView.setWebContentsDebuggingEnabled(true)
         webView.loadUrl("file:///android_asset/index.html")
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        if (::mediaPlayer.isInitialized) {
+            mediaPlayer.release()
+        }
+        if (::mediaPlayer2.isInitialized) {
+            mediaPlayer2.release()
+        }
+    }
+
+
 }
 
 @Composable

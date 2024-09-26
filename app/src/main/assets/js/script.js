@@ -11,11 +11,13 @@ const telaFim = document.querySelector('.telaFim');
 const pontuacaoFinal = document.querySelector('.pontuacaoFinalValor');
 const btnRestartFinalGame = document.querySelector('.btnReiniciarJogo');
 const hiscoreSuperior = document.querySelector('.hiscore-valor');
+var flagAndroid = false;
 
 //Controle de pontuacao mais alta
 if(typeof Android !== 'undefined'){
     // Chamar a função e garantir que ela seja executada após o retorno
     setTimeout(function() {
+        flagAndroid = true;
         var hiscore = Android.getHighestPontuacao();  // Chamar o método Android
         document.querySelector('.hiscoreValorFinal').textContent = hiscore;
         hiscoreSuperior.textContent = hiscore; 
@@ -29,9 +31,10 @@ if(typeof Android !== 'undefined'){
 
 const desviar = () => {
     foguete.classList.add('desvio');
+    playMoving();
     setTimeout(()=>
         {
-            //alert('teste');
+
             foguete.classList.remove('desvio');
         }, 1000);
 }
@@ -46,10 +49,12 @@ const verificaFim = setInterval(() => {
         foguete.style.animation = 'none';
         foguete.style.bottom = foguetePosition+'px';
 
-        foguete.src = './img/fogueteExplodindo.png';
+        foguete.src = './img/fogueteExplodindo.png';        
+        fundo.style.animation = 'none';              
+       //tocar som da explosao       
+        playExplosion();
+       
         
-        fundo.style.animation = 'none';        
-
         if(+vidasValor.textContent > 0){
             vidasValor.textContent = +vidasValor.textContent - 1;
             restartTela.style.visibility = 'visible';
@@ -113,19 +118,31 @@ btnRestartFinalGame.addEventListener('touchstart', restartFinalGame);
 
 //controle de som 
 const musicaDeFundo = document.getElementById('backgroundMusic');
+//const explosionSong = document.getElementById('explosionSong');
 const btnMute = document.querySelector('.mute-img');
 const btnUnMute = document.querySelector('.unmute-img');
+flagSong = false;
 
 const playBackgroundSong = () => {
-    musicaDeFundo.play();
-    btnUnMute.style.visibility = "hidden";
-    btnMute.style.visibility = "visible";
+    setTimeout(()=>
+    {
+        
+        explosionSong.pause();
+        musicaDeFundo.play();
+        btnUnMute.style.visibility = "hidden";
+        btnMute.style.visibility = "visible";
+        flagSong = true;
+}   , 250);
 }
 
 const stopBackgroundSong = () => {
-    musicaDeFundo.pause();
-    btnUnMute.style.visibility = "visible";
-    btnMute.style.visibility = "hidden";
+    setTimeout(()=>
+    {
+        musicaDeFundo.pause();
+        btnUnMute.style.visibility = "visible";
+        btnMute.style.visibility = "hidden";
+        flagSong = false;
+    }, 250);
 }
 
 btnUnMute.addEventListener('click', playBackgroundSong);
@@ -133,3 +150,16 @@ btnUnMute.addEventListener('touchstart', playBackgroundSong);
 
 btnMute.addEventListener('click', stopBackgroundSong);
 btnMute.addEventListener('touchstart', stopBackgroundSong);
+
+
+const playExplosion = () =>{
+    if(flagSong && flagAndroid){        
+        Android.playExplosion();
+    }
+}
+
+const playMoving = () =>{
+    if(flagSong && flagAndroid){        
+        Android.playMoving();
+    }
+}
