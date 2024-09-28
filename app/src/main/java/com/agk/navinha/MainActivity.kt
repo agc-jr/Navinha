@@ -21,18 +21,23 @@ import android.webkit.WebViewClient
 import com.agk.navinha.ui.theme.NavinhaTheme
 import com.agk.navinha.PontuacaoDbHelper
 
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
+
+
 class MainActivity : ComponentActivity() {
 
     private lateinit var mediaPlayer: MediaPlayer
     private lateinit var mediaPlayer2: MediaPlayer
     private lateinit var webView: WebView
+    lateinit var adView: AdView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-       // val webView = findViewById<WebView>(R.id.webview)
-       // webView.webViewClient = WebViewClient()
+
 
 
         val webView = findViewById<WebView>(R.id.webview)
@@ -51,6 +56,16 @@ class MainActivity : ComponentActivity() {
                         or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
                         or View.SYSTEM_UI_FLAG_FULLSCREEN
                 )
+
+        // Inicializar o AdMob
+        MobileAds.initialize(this){}
+        // Banner AdView setup
+        adView = findViewById(R.id.adView)
+        val adRequest = AdRequest.Builder().build()
+        // Carregar o anúncio, mas mantê-lo inicialmente invisível
+        adView.loadAd(adRequest)
+        adView.visibility = View.GONE
+
 
         // Adicionando a interface JavaScript para comunicação com Android
         webView.addJavascriptInterface(object {
@@ -76,6 +91,22 @@ class MainActivity : ComponentActivity() {
             fun playMoving() {
                 mediaPlayer2 = MediaPlayer.create(this@MainActivity, R.raw.moving2)
                 mediaPlayer2.start()
+            }
+
+            // Método para exibir o banner
+            @JavascriptInterface
+            fun showBanner() {
+                runOnUiThread {
+                    adView.visibility = View.VISIBLE
+                }
+            }
+
+            // Método para esconder o banner
+            @JavascriptInterface
+            fun hideBanner() {
+                runOnUiThread {
+                    adView.visibility = View.GONE
+                }
             }
         }, "Android")
         WebView.setWebContentsDebuggingEnabled(true)

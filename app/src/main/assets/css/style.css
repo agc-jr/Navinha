@@ -297,13 +297,13 @@ body{
   .pontuacaoFinalValor {
     font-size: 3em;
     font-weight: bold;
-    margin: 10px 0;
+    margin: 0px 0;
   }
   
   .hiscoreValorFinal {
     font-size: 2em;
     font-weight: bold;
-    margin: 10px 0;
+    margin: 0px 0;
   }
   
   .btnReiniciarJogo {
@@ -316,7 +316,7 @@ body{
   .txtGameOver {
     font-size: 2em;
     font-weight: bold;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
     color: #fff;
   }
   

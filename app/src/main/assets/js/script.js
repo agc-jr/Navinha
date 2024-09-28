@@ -59,6 +59,7 @@ const verificaFim = setInterval(() => {
             vidasValor.textContent = +vidasValor.textContent - 1;
             restartTela.style.visibility = 'visible';
         }else{            
+            showBanner();
             fundoTelaFim.style.visibility = 'visible'; 
             telaFim.style.visibility = 'visible';            
             pontuacaoFinal.textContent = +pontosValor.textContent;   
@@ -104,6 +105,7 @@ const restartGame = () => {
 }    
 
 const restartFinalGame = () => {
+    hideBanner();
     fundoTelaFim.style.visibility = 'hidden';
     telaFim.style.visibility = 'hidden';
     pontosValor.textContent = 0;
@@ -161,5 +163,18 @@ const playExplosion = () =>{
 const playMoving = () =>{
     if(flagSong && flagAndroid){        
         Android.playMoving();
+    }
+}
+
+
+function showBanner() {
+    if(flagAndroid){
+        Android.showBanner();
+    }
+}
+
+function hideBanner() {
+    if(flagAndroid){
+        Android.hideBanner();
     }
 }
