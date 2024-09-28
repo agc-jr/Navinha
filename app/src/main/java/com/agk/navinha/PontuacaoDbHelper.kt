@@ -38,6 +38,15 @@ class PontuacaoDbHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_N
         db.close()
     }
 
+    fun zeraPontuacao() {
+        val db = this.writableDatabase
+        val values = ContentValues().apply {
+            put(COLUMN_PONTUACAO, 0)
+        }
+        db.update(TABLE_NAME, values, null, null)
+        db.close()
+    }
+
     // Função para pegar a maior pontuação
     fun getHighestPontuacao(): Int {
         val db = this.readableDatabase

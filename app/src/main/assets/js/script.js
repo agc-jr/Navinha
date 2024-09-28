@@ -74,7 +74,7 @@ const verificaFim = setInterval(() => {
             }else{
                 if(+pontuacaoFinal.textContent > hiscoreSuperior.textContent){ 
                     Android.savePontuacao(+pontuacaoFinal.textContent);                   
-                    document.querySelector('.hiscoreValorFinal').textContent = +pontuacaoFinal.textContent;                    
+                    document.querySelector('.hiscore-valor').textContent = +pontuacaoFinal.textContent;                    
                 }
             }        
         }
@@ -178,3 +178,17 @@ function hideBanner() {
         Android.hideBanner();
     }
 }
+
+//resetar o placar do jogo
+const resetScoreHi = () => {
+    if(flagAndroid){
+        Android.pontuacaoZero();
+        document.querySelector('.hiscore-valor').textContent = 0;
+        restartFinalGame();
+    }
+}
+
+
+const resetHiscore = document.getElementById('resetHiscore');
+resetHiscore.addEventListener('click', resetScoreHi);
+resetHiscore.addEventListener('touchstart', resetScoreHi);

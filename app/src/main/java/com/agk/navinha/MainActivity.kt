@@ -76,6 +76,12 @@ class MainActivity : ComponentActivity() {
             }
 
             @JavascriptInterface
+            fun pontuacaoZero() {
+                val dbHelper = PontuacaoDbHelper(this@MainActivity)
+                dbHelper.zeraPontuacao()
+            }
+
+            @JavascriptInterface
             fun getHighestPontuacao(): Int {
                 val dbHelper = PontuacaoDbHelper(this@MainActivity)
                 return dbHelper.getHighestPontuacao()

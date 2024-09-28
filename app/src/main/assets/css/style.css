@@ -192,16 +192,16 @@ body{
 .hiscore-img{
     position: absolute;
     height: 80px;    
-    right: 30px;
-    margin: -55px 0px;
+    right: 65px;
+    margin: -60px 0px;
 }
 
 .hiscore{
     position: absolute;
     height: 30px;    
     font-size: 12px;
-    right: 40px;
-    margin: -10px 0px;
+    right: 75px;
+    margin: -15px 0px;
 }
 
 .hiscore-valor{
@@ -336,6 +336,12 @@ body{
     visibility: visible;
     }
 
+ .reset-img{
+    position: absolute;
+    height: 50px;
+    right: 5px;
+    top: 22px;
+ }
 
 
 
